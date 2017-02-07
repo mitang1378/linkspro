@@ -1,0 +1,9 @@
+/**登录**/
+.login {width: 450px;background: rgba(0,0,0,.4);color: #ccc;margin: 168px auto;position: relative;border-radius: 4px;}
+.login-content{padding: 40px;color: #999;width: 450px;margin: 0 auto;}
+.m-b-20 {margin-bottom: 20px!important;}
+.form-control{background: rgba(0,0,0,.4);border: none;color: #fff;box-shadow: none;font-size:12px;-webkit-border-radius: 3px;border-radius: 3px;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;display: block;width: 100%;}
+.input-lg{height: 46px;padding: 10px 16px;line-height: 1.33;}
+.btn{font-weight: 300;border-radius: 3px;}
+.btn-success{color: #fff;background: #00acac;border-color: #00acac;}
+.btn-success:hover{background: #008a8a;border-color: #008a8a;}

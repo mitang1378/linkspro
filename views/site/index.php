@@ -37,7 +37,7 @@
         <?php foreach ($left_menu as $menu){?>
         <div class="panel panel-info">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-th-large"></span><?=$menu['name']?>
+                <span class="glyphicon glyphicon-th-large"></span><span class="title"><?=$menu['name']?></span>
                 <a href="<?=Url::toRoute(['/site/stopmodel','id'=>$menu['id']]);?>" class="pull-right panel-icon"><span class="glyphicon glyphicon-trash"></span></a>
                 <a onclick="tipwindows(<?=$menu['id']?>)" class="pull-right panel-icon"><span class="glyphicon glyphicon-wrench"></span></a>
             </div>
@@ -61,7 +61,7 @@
         <?php foreach ($right_menu as $menu){?>
         <div class="panel panel-info">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-th-large"></span><?=$menu['name']?>
+                <span class="glyphicon glyphicon-th-large"></span><span class="title"><?=$menu['name']?></span>
                 <a href="<?=Url::toRoute(['/site/stopmodel','id'=>$menu['id']]);?>" class="pull-right panel-icon"><span class="glyphicon glyphicon-trash"></span></a>
                 <a onclick="tipwindows(<?=$menu['id']?>)" class="pull-right panel-icon"><span class="glyphicon glyphicon-wrench"></span></a>
             </div>

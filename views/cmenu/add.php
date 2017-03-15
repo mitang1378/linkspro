@@ -25,6 +25,7 @@ $this->title = "添加网址";
         'options' => ['enctype' => 'multipart/form-data']
     ]); ?>
     <?=$form->field($model, 'name')->textInput(['maxlength' => true])?>
+    <?=$form->field($model, 'orderid')->input('number')?>
     <div class="form-group text-center">
         <?= Html::resetButton('重置', ['class' => 'btn  btn-primary']) ?>
         <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>

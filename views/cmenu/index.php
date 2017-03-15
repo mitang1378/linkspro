@@ -21,7 +21,7 @@ use yii\helpers\Url;
                 <?=$li->name?>
             </td>
             <td width="60">
-                <a href="#"><span class="glyphicon glyphicon-cog"></span></a>
+                <a href="<?=Url::to(['/cmenu/edit','id'=>$li->id])?>"><span class="glyphicon glyphicon-cog"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
             </td>
         </tr>

@@ -70,8 +70,8 @@ class SiteController extends Controller
         $mid = Yii::$app->user->getId();
         $bgimgs = Upfiles::find()->where(['mid'=>$mid,'status'=>1])->asArray()->one();
         $bgimg = empty($bgimgs)?'':$bgimgs['path'];
-        $left_menu  = Cmenu::find()->with('urls')->where(['location'=>1,'mid'=>$mid])->asArray()->all();
-        $right_menu = Cmenu::find()->with('urls')->where(['location'=>2,'mid'=>$mid])->asArray()->all();
+        $left_menu  = Cmenu::find()->with('urls')->where(['location'=>1,'mid'=>$mid])->asArray()->orderBy('orderid asc')->all();
+        $right_menu = Cmenu::find()->with('urls')->where(['location'=>2,'mid'=>$mid])->asArray()->orderBy('orderid asc')->all();
         return $this->renderPartial('index',[
             'left_menu'=>$left_menu,
             'right_menu'=>$right_menu,

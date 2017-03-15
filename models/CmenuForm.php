@@ -7,11 +7,13 @@ use app\models\Cmenu;
  */
 class CmenuForm extends Model{
     public $name;
+    public $orderid;
     public function rules()
     {
         return [
             ['name','required'],
-            ['name','string','min'=>2,'max'=>'16']
+            ['name','string','min'=>2,'max'=>'16'],
+            ['orderid','integer']
         ];
     }
 
@@ -26,6 +28,7 @@ class CmenuForm extends Model{
         }
         $model = new Cmenu();
         $model->name = $this->name;
+        $model->orderid = $this->orderid;
         $model->mid  = \Yii::$app->user->getId();
         $model->location = 0;
         return $model->save()?$model:null;
@@ -38,6 +41,7 @@ class CmenuForm extends Model{
     {
         return [
           'name' => '名称',
+          'orderid' => '排序'
         ];
     }
 }

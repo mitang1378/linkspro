@@ -5,6 +5,7 @@ use app\models\CmenuForm;
 use yii\web\Controller;
 use app\models\Cmenu;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
  * 类别管理
@@ -39,6 +40,12 @@ class CmenuController extends Controller{
         return $this->renderPartial('/cmenu/add',['model'=>$model]);
     }
 
+    /**
+     * 修改类别
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionEdit($id)
     {
         $model = $this->findModel($id);
@@ -48,6 +55,13 @@ class CmenuController extends Controller{
         }
 
         return $this->renderPartial('/cmenu/add',['model'=>$model]);
+    }
+
+    public function actionDel($id)
+    {
+        $model = $this->findModel($id);
+        $model->delete();
+        return $this->redirect('/cmenu/list');
     }
 
     public function findModel($id)

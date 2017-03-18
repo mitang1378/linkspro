@@ -1,9 +1,9 @@
 <?php
 namespace app\controllers;
 
+use Yii;
 use app\models\Cmenu;
 use app\models\Upfiles;
-use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -11,7 +11,7 @@ use app\models\LoginForm;
 use app\models\Tool;
 use app\models\Url;
 use app\models\UserForm;
-
+use app\models\Task;
 class SiteController extends Controller
 {
     /**
@@ -72,10 +72,12 @@ class SiteController extends Controller
         $bgimg = empty($bgimgs)?'':$bgimgs['path'];
         $left_menu  = Cmenu::find()->with('urls')->where(['location'=>1,'mid'=>$mid])->asArray()->orderBy('orderid asc')->all();
         $right_menu = Cmenu::find()->with('urls')->where(['location'=>2,'mid'=>$mid])->asArray()->orderBy('orderid asc')->all();
+        $task_list  = Task::find()->asArray()->orderBy('id asc')->all();
         return $this->renderPartial('index',[
             'left_menu'=>$left_menu,
             'right_menu'=>$right_menu,
-            'bgimg' =>$bgimg
+            'bgimg' =>$bgimg,
+            'tasklist' => $task_list
         ]);
     }
 

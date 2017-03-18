@@ -7,6 +7,8 @@ use app\models\Url;
 use app\models\UrlForm;
 use yii\filters\VerbFilter;
 use app\models\Cmenu;
+use yii\web\NotFoundHttpException;
+
 class UrlController extends Controller
 {
     /**
@@ -15,11 +17,13 @@ class UrlController extends Controller
      */
     public function actionList($cid)
     {
-        $model = Url::find()->where(['cid'=>$cid])->all();
+        $model = Url::find()->where(['cid'=>$cid])->orderBy('order asc')->all();
         $cmenu = Cmenu::find()->where(['id'=>$cid])->one();
+        $count = Url::find()->where(['cid'=>$cid])->count();
         return  $this->renderPartial('index',[
             'model'=>$model,
-            'cmenu'=>$cmenu
+            'cmenu'=>$cmenu,
+            'count' => $count
         ]);
     }
 
@@ -62,5 +66,46 @@ class UrlController extends Controller
         $mid = Yii::$app->user->getId();
         Url::deleteAll(['id'=>$id,'mid'=>$mid]);
         return $this->goBack(Yii::$app->request->getReferrer());
+    }
+
+    /**
+     * 升序
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     */
+    public function actionOrderup($id)
+    {
+        $model = $this->findModel($id);
+        if($model->order > 0)
+        {
+            $model->updateCounters(['order'=>-1]);
+        }
+
+        return $this->goBack(Yii::$app->request->getReferrer());
+    }
+
+    public function actionOrderdown($id)
+    {
+        $model = $this->findModel($id);
+        $model->updateCounters(['order'=>+1]);
+        return $this->goBack(Yii::$app->request->getReferrer());
+    }
+
+    /**
+     * @param $id
+     * @return static
+     * @throws NotFoundHttpException
+     */
+
+    public function findModel($id)
+    {
+        $mid = Yii::$app->user->getId();
+        if(($model = Url::findOne($id)) !== null )
+        {
+            return $model;
+        }else{
+            throw new NotFoundHttpException('未找到该项目');
+        }
     }
 }

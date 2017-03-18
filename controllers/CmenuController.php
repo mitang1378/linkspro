@@ -21,8 +21,13 @@ class CmenuController extends Controller{
                  ->where(['mid'=>Yii::$app->user->getId()])
                  ->orderBy('orderid asc')
                  ->all();
+        $count = Cmenu::find()
+                ->where(['mid'=>Yii::$app->user->getId()])
+                ->orderBy('orderid asc')
+                ->count();
         return $this->renderPartial('index',[
-            'model' => $model
+            'model' => $model,
+            'count' => $count
         ]);
     }
 
@@ -57,6 +62,36 @@ class CmenuController extends Controller{
         return $this->renderPartial('/cmenu/add',['model'=>$model]);
     }
 
+    /*
+     *升序
+     */
+    public function actionOrderup($id)
+    {
+        $model = $this->findModel($id);
+        if($model->orderid > 0){
+            $model->updateCounters(['orderid'=>-1]);
+        }
+        return $this->redirect('/cmenu/list');
+    }
+
+    /**
+     * 降序
+     * @param $id
+     */
+    public function actionOrderdown($id)
+    {
+        $model = $this->findModel($id);
+        $model->updateCounters(['orderid'=>+1]);
+        return $this->redirect('/cmenu/list');
+    }
+    /**
+     * 删除操作
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \Exception
+     * @throws \Throwable
+     */
     public function actionDel($id)
     {
         $model = $this->findModel($id);

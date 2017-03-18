@@ -1,0 +1,2 @@
+.task_model .list-group-item .trash{display: none;position: relative;right: 0;z-index: 9;float: right;}
+.task_model .list-group-item:hover .trash{display:inline;}

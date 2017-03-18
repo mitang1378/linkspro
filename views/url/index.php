@@ -13,12 +13,16 @@ use yii\helpers\Url;
 </p>
 <table class="table table-bordered table-hover">
     <?php
-    foreach ($model as $li) {
+    foreach ($model as $k => $li) {
         ?>
         <tr>
             <td width="20"><span class="glyphicon glyphicon-record"></span></td>
             <td>
                 <?=$li->title?>
+            </td>
+            <td width="60">
+                <a href="<?=Url::toRoute(['/url/orderup','id'=>$li->id])?>" class="btn <?= $k==0?'disabled':''?>" style="padding: 0;"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a href="<?=Url::toRoute(['/url/orderdown','id'=>$li->id])?>" class="btn <?= $k==($count-1)?'disabled':''?>"  style="padding: 0;"><span class="glyphicon glyphicon-arrow-down"></span></a>
             </td>
             <td width="60">
                 <a href="<?=Url::toRoute(['/url/edit','id'=>$li->id])?>"><span class="glyphicon glyphicon-cog"></span></a>

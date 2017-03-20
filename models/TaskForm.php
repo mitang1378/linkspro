@@ -24,6 +24,7 @@ class TaskForm extends Model
 
         $model = new Task();
         $model->task = $this->task;
+        $model->mid  = \Yii::$app->user->getId();
         return $model->save()?$model:null;
     }
 

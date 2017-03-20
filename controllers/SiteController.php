@@ -72,7 +72,7 @@ class SiteController extends Controller
         $bgimg = empty($bgimgs)?'':$bgimgs['path'];
         $left_menu  = Cmenu::find()->with('urls')->where(['location'=>1,'mid'=>$mid])->asArray()->orderBy('orderid asc')->all();
         $right_menu = Cmenu::find()->with('urls')->where(['location'=>2,'mid'=>$mid])->asArray()->orderBy('orderid asc')->all();
-        $task_list  = Task::find()->asArray()->orderBy('id asc')->all();
+        $task_list  = Task::find()->where(['mid'=>$mid])->asArray()->orderBy('id asc')->all();
         return $this->renderPartial('index',[
             'left_menu'=>$left_menu,
             'right_menu'=>$right_menu,

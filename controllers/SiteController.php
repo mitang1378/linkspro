@@ -93,8 +93,12 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goHome();
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->login()){
+                return $this->goHome();
+            }else{
+                \Yii::$app->getSession()->setFlash('danger', "账号错误！");
+            }
         }
         return $this->render('login', [
             'model' => $model,

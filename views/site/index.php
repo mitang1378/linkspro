@@ -9,7 +9,7 @@
     <link href="statics/css/site.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="statics/css/mplayer.css">
     <link rel="stylesheet" href="statics/css/taskmodel.css">
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/statics/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.js"></script>
     <script src="statics/layer/layer.js"></script>
@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body style="background: url(<?php if(empty($bgimg)){?>/statics/img/bg.jpg<?php }else{echo $bgimg; }?>)">
+<body style="background: url(<?php if(empty($bgimg)){?>/statics/img/bg.jpg<?php }else{echo $bgimg; }?>);background-size:cover;background-attachment:fixed">
 <div class="container">
     <form action="http://www.baidu.com/baidu" target="_blank">
         <div class="col-md-2 col-sm-12 text-center bd_logo">
@@ -129,10 +129,10 @@
             <p><span class="mp-time-current">00:00</span>/<span class="mp-time-all">00:00</span></p>
         </div>
         <div class="mp-btn">
-            <button class="mp-prev" title="上一首"></button>
+            <button class="mp-prev"  title="上一首"></button>
             <button class="mp-pause" title="播放"></button>
-            <button class="mp-next" title="下一首"></button>
-            <button class="mp-mode" title="播放模式"></button>
+            <button class="mp-next"  title="下一首"></button>
+            <button class="mp-mode"  title="播放模式"></button>
             <div class="mp-vol">
                 <button class="mp-vol-img" title="静音"></button>
                 <div class="mp-vol-range" data-range_min="0" data-range_max="100" data-cur_min="80">
